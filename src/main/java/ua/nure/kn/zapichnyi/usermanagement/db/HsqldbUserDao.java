@@ -7,7 +7,7 @@ import ua.nure.kn.zapichnyi.usermanagement.User;
 public class HsqldbUserDao implements UserDao {
 
 	@Override
-	public User create(User user) {
+	public User create(User user)throws DatabaseException {
 		// TODO Auto-generated method stub
 		return null;
 	}
