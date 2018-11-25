@@ -41,7 +41,7 @@
     	<mkdir dir="${classes-dir}"/>
     </target>
 	<target name="test-compile" depends="compile">
-			<javac srcdir="${test-java-dir}" destdir="${build-dir}"/>
+			<javac srcdir="${test-java-dir}" destdir="${build-dir}" includeantruntime="no" />
 		</target>
 	
 	<target name="test" depends="compile,test-compile">

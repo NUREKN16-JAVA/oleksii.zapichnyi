@@ -25,10 +25,9 @@ public class User implements Serializable {
       lastName=string2;
       dateOfBirth=parse;
 	}
-	public long getId() {
+	public long getId(){
 		return id;
 	}
-	
 	public void setId(long id) {
 		this.id = id;
 	}
