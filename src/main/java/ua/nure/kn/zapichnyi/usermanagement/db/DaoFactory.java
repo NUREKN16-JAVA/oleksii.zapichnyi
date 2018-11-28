@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class DaoFactory {
+	private static final String USER_DAO = "dao.nure.kn.zapichnyi.usermanagement.db.UserDao";
 	private final Properties properties;
 public DaoFactory(){
 	properties= new Properties();
@@ -24,7 +25,13 @@ private ConnectionFactory getConnectionFactory(){
 }
 public UserDao getUserDao(){
 	UserDao result = null;
-	
+	try {
+			Class clazz = Class.forName(properties.getProperty(USER_DAO));
+		UserDao userDao= (UserDao)clazz.newInstance();
+		userDao.setConnectionFactory(getConnectionFactory());
+	} catch (Exception e) {
+		throw new RuntimeException(e);
+	}
 	return result;
 }
 }
