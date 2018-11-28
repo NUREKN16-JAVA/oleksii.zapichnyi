@@ -6,7 +6,8 @@ import java.util.Properties;
 public class DaoFactory {
 	private static final String USER_DAO = "dao.nure.kn.zapichnyi.usermanagement.db.UserDao";
 	private final Properties properties;
-public DaoFactory(){
+	private final static DaoFactory INSTANCE = new DaoFactory();
+private DaoFactory(){
 	properties= new Properties();
 	try {
 			properties.load(getClass().getClassLoader().getResourceAsStream(
@@ -15,7 +16,9 @@ public DaoFactory(){
 	  throw new RuntimeException(e);
 	}
 }
-
+public static DaoFactory getInstance(){
+	return INSTANCE;
+}
 private ConnectionFactory getConnectionFactory(){
 	String user = properties.getProperty("sa");
 	String password = properties.getProperty("password");
