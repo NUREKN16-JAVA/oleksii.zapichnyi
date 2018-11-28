@@ -6,10 +6,13 @@ import ua.nure.kn.zapichnyi.usermanagement.User;
 import junit.framework.TestCase;
 
 public class HsqldbUserDaoTest extends TestCase {
-  HsqldbUserDao dao;
-	protected void setUp() throws Exception {
+ private HsqldbUserDao dao;
+ private ConnectionFactory connectionFactory;
+  
+	protected void  setUp() throws Exception {
 		super.setUp();
-		dao = new HsqldbUserDao();
+		connectionFactory= new ConnectionFactoryImpl();
+		dao = new HsqldbUserDao(connectionFactory);
 	}
 
 	public void testCreate() {
