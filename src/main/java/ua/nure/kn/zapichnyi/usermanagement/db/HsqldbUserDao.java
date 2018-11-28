@@ -19,6 +19,9 @@ public class HsqldbUserDao implements UserDao {
 	private ConnectionFactory connectionFactory;
 	 
 	
+	public HsqldbUserDao() {
+		
+	}
 	public HsqldbUserDao(ConnectionFactory connectionFactory) {
 		super();
 		this.connectionFactory = connectionFactory;
@@ -101,6 +104,16 @@ public class HsqldbUserDao implements UserDao {
 			throw new DatabaseException(e);
 		}
 		return result;
+	}
+
+
+	public ConnectionFactory getConnectionFactory() {
+		return connectionFactory;
+	}
+
+
+	public void setConnectionFactory(ConnectionFactory connectionFactory) {
+		this.connectionFactory = connectionFactory;
 	}
 
 	

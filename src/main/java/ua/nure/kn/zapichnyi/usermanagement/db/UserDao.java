@@ -10,5 +10,6 @@ public interface UserDao {
  void delete(User user)throws DatabaseException;
  User find(long id)throws DatabaseException;
  Collection<User> findAll() throws DatabaseException;
+ void setConnectionFactory(ConnectionFactory connectionFactory);
  
 }
