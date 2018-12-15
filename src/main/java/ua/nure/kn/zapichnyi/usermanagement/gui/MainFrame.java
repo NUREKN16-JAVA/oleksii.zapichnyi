@@ -7,6 +7,8 @@ import java.awt.Container;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import ua.nure.kn.zapichnyi.usermanagement.util.Messages;
+
 public class MainFrame extends JFrame {
 	private static final int FRAME_HEIGHT = 600;
 	private static final int FRAME_WIDTH = 800;
@@ -22,7 +24,7 @@ public class MainFrame extends JFrame {
 	private void initialize() {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(FRAME_WIDTH,FRAME_HEIGHT);
-		this.setTitle("”правление пользовател€ми");
+		this.setTitle(Messages.getString("MainFrame.user_nanagement")); //$NON-NLS-1$
 		this.setContentPane(getContentPanel());
 		
 		
