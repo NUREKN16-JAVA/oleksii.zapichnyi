@@ -96,5 +96,7 @@ public class MainFrameTest extends JFCTestCase {
 	    table = (JTable) find(JTable.class, "userTable");
 		
 	}
+	
+	
 
 }

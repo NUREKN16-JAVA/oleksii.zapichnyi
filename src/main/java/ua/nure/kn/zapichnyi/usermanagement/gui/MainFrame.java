@@ -7,19 +7,34 @@ import java.awt.Container;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import ua.nure.kn.zapichnyi.usermanagement.User;
+import ua.nure.kn.zapichnyi.usermanagement.db.DaoFactory;
+import ua.nure.kn.zapichnyi.usermanagement.db.UserDao;
 import ua.nure.kn.zapichnyi.usermanagement.util.Messages;
 
 public class MainFrame extends JFrame {
 	private static final int FRAME_HEIGHT = 600;
 	private static final int FRAME_WIDTH = 800;
 	private JPanel  contentPanel;
-	private JPanel browserPanel;
+	private JPanel browsePanel;
 	private AddPanel addPanel;
+	private UserDao dao;
+	private EditPanel editPanel;
+	private DeletePanel deletePanel;
+	private DetailsPanel detailsPanel;
+
 
 	public MainFrame() {
 		super();
+		dao=DaoFactory.getInstance().getUserDao();
 		initialize();
 	}
+	
+
+	public UserDao getDao() {
+		return dao;
+	}
+
 
 	private void initialize() {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -40,10 +55,11 @@ public class MainFrame extends JFrame {
 	}
 
 	private JPanel getBrowsePanel() {
-		if(browserPanel==null) {
-			browserPanel= new BrowsePanel(this);
+		if(browsePanel==null) {
+			browsePanel= new BrowsePanel(this);
 		}
-		return browserPanel;
+        ((BrowsePanel)browsePanel).initTable();
+		return browsePanel;
 	}
 
 	public static void main(String[] args) {
@@ -74,6 +90,50 @@ public class MainFrame extends JFrame {
 		addPanel = new AddPanel(this);
 		}
 		return addPanel;
+	}
+
+	public DeletePanel getDeletePanel() {
+		if (deletePanel == null) {
+			deletePanel = new DeletePanel(this);
+			
+		}
+		return deletePanel;
+		
+	}
+	
+	public void showDeletePanel(User user) {
+		DeletePanel deletePanel = getDeletePanel();
+        deletePanel.showDeletePanel(user);
+        this.showPanel(getDeletePanel());
+	}
+
+
+	private EditPanel getEditPanel() {
+		if (editPanel == null) {
+			editPanel = new EditPanel(this);
+			
+		}
+		return editPanel;
+	}
+	
+	public void showEditPanel(User user) {
+		showPanel(getEditPanel());
+		
+	}
+	public void showDetailsPanel(User user) {
+		DetailsPanel detailsPanel = getDetailsPanel();
+		detailsPanel.showDetailsPanel(user);
+        this.showPanel(getDetailsPanel());
+}
+
+
+
+	public DetailsPanel getDetailsPanel() {
+		if (detailsPanel == null) {
+			detailsPanel = new DetailsPanel(this);
+			
+		}
+		return detailsPanel;
 	}
 
 }

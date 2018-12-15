@@ -7,10 +7,12 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
+import ua.nure.kn.zapichnyi.usermanagement.db.DatabaseException;
 import ua.nure.kn.zapichnyi.usermanagement.util.Messages;
 
 public class BrowsePanel extends JPanel implements ActionListener {
@@ -113,19 +115,62 @@ public class BrowsePanel extends JPanel implements ActionListener {
 		if(userTable==null) {
 			userTable= new JTable();
 			userTable.setName("userTable"); //$NON-NLS-1$
-			UserTableModel  model= new UserTableModel(new ArrayList<>());
-			userTable.setModel(model);
+
 		}
 		return userTable;
 	}
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		 String actionCommand=e.getActionCommand();
-		if("add".equalsIgnoreCase(actionCommand)) { //$NON-NLS-1$
-			this.setVisible(false);
-			parent.showAddPanel();
+	public void initTable() {
+		UserTableModel model;
+		try {
+			model = new UserTableModel(parent.getDao().findAll());
+		} catch (DatabaseException e) {
+		model = new UserTableModel(new ArrayList<>());
+		JOptionPane.showMessageDialog(this, e.getMessage(), "Error",
+				JOptionPane.ERROR_MESSAGE);
 		}
+		userTable.setModel(model);
 	}
 
+	@Override
+    public void actionPerformed(ActionEvent e) {
+        String actionCommand = e.getActionCommand();
+        if ("add".equalsIgnoreCase(actionCommand)) { //$NON-NLS-1$
+        	this.setVisible(false);
+        	parent.showAddPanel();
+        }
+        else if("edit".equalsIgnoreCase(actionCommand)) { //$NON-NLS-1$
+        	Long id=(long) userTable.getValueAt(userTable.getSelectedRow(), 0);
+        	this.setVisible(false);
+        	try {
+				parent.showEditPanel(parent.getDao().find(id));
+			} catch (DatabaseException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+        }
+        else if("delete".equalsIgnoreCase(actionCommand)) { //$NON-NLS-1$
+        	Long id=(long) userTable.getValueAt(userTable.getSelectedRow(), 0);
+        	this.setVisible(false);
+        	try {
+				parent.showDeletePanel(parent.getDao().find(id));
+			} catch (DatabaseException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+        }
+        else if("details".equalsIgnoreCase(actionCommand)) { //$NON-NLS-1$
+        	Long id=(long) userTable.getValueAt(userTable.getSelectedRow(), 0);
+        	this.setVisible(false);
+        	try {
+				parent.showDetailsPanel(parent.getDao().find(id));
+			} catch (DatabaseException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+        }
+        initTable();
+        return;
+        	
+        }
 }
