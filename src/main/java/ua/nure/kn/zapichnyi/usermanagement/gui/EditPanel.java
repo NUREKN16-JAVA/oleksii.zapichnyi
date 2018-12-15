@@ -59,7 +59,7 @@ public class EditPanel extends JPanel  implements ActionListener{
 	private JButton getCancelButton() {
 		if (cancelButton == null) {
 			cancelButton = new JButton();
-			cancelButton.setText(Messages.getString("EditPanel.cancel")); //$NON-NLS-1$
+			cancelButton.setText(Messages.getString("AddPanel.cancel")); //$NON-NLS-1$
 			cancelButton.setName("cancelButton"); //$NON-NLS-1$
 			cancelButton.setActionCommand("cancel"); //$NON-NLS-1$
 			cancelButton.addActionListener(this);
@@ -70,7 +70,7 @@ public class EditPanel extends JPanel  implements ActionListener{
 	private JButton getOkButton() {
 		if (okButton == null) {
 			okButton = new JButton();
-			okButton.setText(Messages.getString("EditPanel.ok")); //$NON-NLS-1$
+			okButton.setText(Messages.getString("AddPanel.ok")); //$NON-NLS-1$
 			okButton.setName("okButton"); //$NON-NLS-1$
 			okButton.setActionCommand("ok"); //$NON-NLS-1$
 			okButton.addActionListener(this);
@@ -82,9 +82,9 @@ public class EditPanel extends JPanel  implements ActionListener{
 		if (fieldPanel == null) {
 			fieldPanel = new JPanel();
 			fieldPanel.setLayout(new GridLayout(3, 2));
-			addLabeledField(fieldPanel, Messages.getString("EditPanel.first_name"), getFirstNameField()); //$NON-NLS-1$
-			addLabeledField(fieldPanel, Messages.getString("EditPanel.last_name"), getLastNameField()); //$NON-NLS-1$
-			addLabeledField(fieldPanel, Messages.getString("EditPanel.date_of_birth"), getDateOfBirthField()); //$NON-NLS-1$
+			addLabeledField(fieldPanel, Messages.getString("AddPanel.first_name"), getFirstNameField()); //$NON-NLS-1$
+			addLabeledField(fieldPanel, Messages.getString("AddPanel.last_name"), getLastNameField()); //$NON-NLS-1$
+			addLabeledField(fieldPanel, Messages.getString("AddPanel.date_of_birth"), getDateOfBirthField()); //$NON-NLS-1$
 		}
 		return fieldPanel;
 	}

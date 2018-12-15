@@ -49,7 +49,7 @@ public class DeletePanel extends JPanel implements ActionListener{
 	private JButton getCancelButton() {
 		if (cancelButton == null) {
 			cancelButton = new JButton();
-			cancelButton.setText(Messages.getString("EditPanel.cancel")); //$NON-NLS-1$
+			cancelButton.setText(Messages.getString("AddPanel.cancel")); //$NON-NLS-1$
 			cancelButton.setName("cancelButton"); //$NON-NLS-1$
 			cancelButton.setActionCommand("cancel"); //$NON-NLS-1$
 			cancelButton.addActionListener(this);
@@ -60,7 +60,7 @@ public class DeletePanel extends JPanel implements ActionListener{
 	private JButton getOkButton() {
 		if (okButton == null) {
 			okButton = new JButton();
-			okButton.setText(Messages.getString("EditPanel.ok")); //$NON-NLS-1$
+			okButton.setText(Messages.getString("AddPanel.ok")); //$NON-NLS-1$
 			okButton.setName("okButton"); //$NON-NLS-1$
 			okButton.setActionCommand("ok"); //$NON-NLS-1$
 			okButton.addActionListener(this);
