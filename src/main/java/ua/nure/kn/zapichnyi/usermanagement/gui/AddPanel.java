@@ -112,8 +112,8 @@ panel.add(textField);
 
 @Override
 public void actionPerformed(ActionEvent e) {
-	
-	
+	this.setVisible(false);
+	parent.showBrowsePanel();
 }
 
 
