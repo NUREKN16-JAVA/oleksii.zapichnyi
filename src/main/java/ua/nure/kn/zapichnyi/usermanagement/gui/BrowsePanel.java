@@ -43,7 +43,7 @@ public class BrowsePanel extends JPanel implements ActionListener {
 			buttonPanel.add(getDetailsButton(),BorderLayout.CENTER);
 		}
 		
-		return null;
+		return buttonPanel;
 	}
 
 	

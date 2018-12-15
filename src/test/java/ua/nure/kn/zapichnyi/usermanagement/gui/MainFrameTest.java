@@ -23,11 +23,11 @@ public class MainFrameTest extends JFCTestCase {
 		mainFrame.setVisible(true);	
 		}
 
-//	protected void tearDown() throws Exception {
-//		mainFrame.setVisible(false);
-//		getHelper().cleanUp(this);
-//		super.tearDown();
-//	}
+	protected void tearDown() throws Exception {
+		mainFrame.setVisible(false);
+		getHelper().cleanUp(this);
+		super.tearDown();
+	}
 	
 	private Component find(Class componentClass,String name) {
 		
