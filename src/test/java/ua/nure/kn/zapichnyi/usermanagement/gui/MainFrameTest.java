@@ -13,21 +13,22 @@ import junit.extensions.jfcunit.finder.NamedComponentFinder;
 public class MainFrameTest extends JFCTestCase {
 
 	private MainFrame mainFrame;
-
+	
 	protected void setUp() throws Exception {
 		super.setUp();
 		setHelper(new JFCTestHelper());
-		mainFrame= new MainFrame();
+		mainFrame = new MainFrame();
 		mainFrame.setVisible(true);	
 		}
 
 	protected void tearDown() throws Exception {
 		mainFrame.setVisible(false);
-		getHelper().cleanUp(this);;
+		getHelper().cleanUp(this);
 		super.tearDown();
 	}
 	
 	private Component find(Class componentClass,String name) {
+		
 		NamedComponentFinder finder; 
 		finder= new NamedComponentFinder(componentClass,name);
 		finder.setWait(0);
