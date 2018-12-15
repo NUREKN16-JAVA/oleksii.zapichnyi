@@ -25,6 +25,11 @@ public class User implements Serializable {
       lastName=string2;
       dateOfBirth=parse;
 	}
+	public User(String firstName, String last_name, Date date) {
+	this.firstName=firstName;
+	this.lastName= last_name;
+	this.dateOfBirth= date;
+	}
 	public long getId(){
 		return id;
 	}
@@ -68,16 +73,10 @@ public class User implements Serializable {
 				+ lastName + ", dateOfBirth=" + dateOfBirth + "]";
 	}
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result
-				+ ((dateOfBirth == null) ? 0 : dateOfBirth.hashCode());
-		result = prime * result
-				+ ((firstName == null) ? 0 : firstName.hashCode());
-		result = prime * result + (int) (id ^ (id >>> 32));
-		result = prime * result
-				+ ((lastName == null) ? 0 : lastName.hashCode());
-		return result;
+	if(this.getId()==0) {
+		return 0;
+	}
+	return new Long (this.getId()).hashCode();
 	}
 	public boolean equals(Object obj) {
 		if (this == obj)
